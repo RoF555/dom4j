@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!ELEMENT users (user+)>
+
+<!ELEMENT user (id,name,password,salary)>
+
+<!--约束标签-->
+<!--id,name,password 这三个标签都是字符串类型-->
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+<!ELEMENT salary (#PCDATA)>
+
+<!--约束标签的属性-->
+<!--
+    user标签必须包含id属性，属性类型是ID，属性约束是#REQUIRED
+    user标签必须包含country属性，属性类型是CDATA，属性约束是#IMPLIED
+    user标签必须包含platfrom属性，属性类型是CDATA，属性约束是#FIXED
+    user标签必须包含source属性，属性类型是枚举，默认值是Android
+-->
+<!ATTLIST user
+        id ID #REQUIRED
+        country CDATA #IMPLIED
+        platfrom CDATA #FIXED "ittimeline"
+        source (Android|IOS|WeChat) "Android"
+        >
